@@ -44,4 +44,21 @@ int diameterUtil(Node node, Height height) {
 }
 
 
+//Aditya Verma's Approach using Dynamic programming
+//Here res will store our final answer.
+
+static int res;
+int solve(Node root) {
+	if (root == null)
+		return 0;
+	int l = solve(root.left);
+	int r = solve(root.right);
+
+	int temp = Math.max(l, r) + 1;
+	int ans = Math.max(temp, 1 + l + r);
+	res = Math.max(res, ans);
+
+	return temp;
+}
+
 //Problem is available on geeksforgeeks
