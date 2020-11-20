@@ -19,7 +19,6 @@ public void flatten(TreeNode root) {
 		curr.left = null;
 	}
 }
-}
 
 
 
