@@ -42,4 +42,41 @@ void postorder(Node root) {
 }
 
 
+//Using Single Stack
+
+void postOrder(Node root) {
+
+	if (root == null)
+		return;
+
+	Node curr = root;
+
+	Stack<Node> stack = new Stack<>();
+
+	while (curr != null || !stack.isEmpty()) {
+
+		if (curr != null) {
+			stack.push(curr);
+			curr = curr.left;
+		} else {
+			Node temp = stack.peek().right;
+			if (temp == null) {
+				temp = stack.pop();
+				System.out.print(temp.val + " ");
+
+				while (!stack.isEmpty() && temp == stack.peek().right) {
+					temp = stack.pop();
+					System.out.print(temp.val + " ");
+				}
+
+			} else {
+				curr = temp;
+			}
+		}
+
+	}
+
+}
+
+
 //Problem is available on geeksforgeeks
